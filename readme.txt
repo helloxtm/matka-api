@@ -1,351 +1,108 @@
-Product Name: Matka API
-Author: Gowebs
-Ph - 8585814444
-whatsapp - https://wa.me/918585858844
-With 5 years of experience in the industry, we are proud to be one of the best Satta Matka application
-providers. We also offer a variety of other games.
-
-
-1 - satta matka 
-2- starline / kolkata ff
-3 - Gali disawar type 
-4 - Aviator game
-5 - Color Prediction
-6- Fun Target Timer
-7 - Casino mines game
-8 - Teer game
-9 - American Roulette
-10 - Ludo Tournaments
-11 - Dragon vs Tiger (coming soon) 
-12 - Chicken Cross road game
-13 - Dpboss website develop
-14 - Satta website develop
-
-
-*Matka Game*
-Price - 50,000
-Advance - 15,000
-Rest amount - 35,000 (After Delivery)
-
--We provide-
-- User application 
-- APK Admin
-- Web Admin
-- Application Download page 
-- Bookie pannel
-- Agent pannel
-
-*Fetures*
-- Add multiple games
-- Automatic result 
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
-
-*APP Demo*
-https://demoff.matka.club/download
-
-*Video Demo*
-https://youtu.be/HCGyfulnjl4?list=PLmKbsQs19H9CpLkQCYXdRrKaNZU_QoI3Q
-https://youtu.be/K_MCY_mB0gA
-https://youtu.be/cSN4YXfcpZA
-https://youtu.be/IPGdcpqorW4
-https://youtu.be/UwGxvMemTP8
-
----------------------------------------------------------------------
-
-*Starline / kolkata ff*
-Price - 55,000
-Advance - 15,000
-Rest amount - 40,000 (After Delivery)
-
--We provide-
-- User application 
-- APK Admin
-- Web Admin
-- Application Download page 
-- Bookie pannel
-- Agent pannel
-
-*Fetures*
-- Add multiple games ( 2 types one kolkata ff type 2nd main bazar type )
-- Automatic result 
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
-
-*APP Demo*
-https://demoff.matka.club/download
-
-*Video Demo*
-https://www.youtube.com/playlist?list=PLmKbsQs19H9B6wzwC4sap60h7M_zrZheV
-https://youtu.be/tAjkCyWRj6c?list=PLmKbsQs19H9B6wzwC4sap60h7M_zrZheV
-https://youtu.be/4OIZLnzp_bM?list=PLmKbsQs19H9B6wzwC4sap60h7M_zrZheV
-bengali video 
-https://youtu.be/5nWex2Xx1v8?list=PLmKbsQs19H9B6wzwC4sap60h7M_zrZheV
-
--------------------------------------------------
-
-*Gali disawar* (Satta Play game)
-Price - ₹ 40,000
-Advance - 15,000
-Rest amount - 25,000 (After Delivery)
-
--We provide-
-- User application 
-- APK Admin
-- Web Admin
-- Application Download page 
-- Bookie pannel
-- Agent pannel
-
-*Fetures*
-- Add multiple games (like gali,disawar )
-- Automatic result 
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
+# Matka API – Fast, Secure & Free Trial Available
 
-*APP Demo*
-https://demods.matka.club/download/
+Matka API offers you a fast, reliable service along with an instant integration kit. You can easily install the simple kit, and a demo code will also be provided to you. Remote support will be available to assist you during the integration process. Additionally, you can download the complete Postman collection to test all API endpoints live.
 
-Video demo
-https://youtu.be/zKgjb7YFylo
+![Banner](https://your_image_link_here/banner1.png)
 
--------------------------------------------------
+---
 
-*Aviator game*
-Price - ₹ 40,000
-Advance - 15,000
-Rest amount - 25,000 (After Delivery)
-
--We provide-
-- User application 
-- Web Admin
-- Application Download page 
-
-*Fetures*
-- Automatic result 
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
-
-*APP Demo*
-https://demo.matka.club/download
+## 🧩 What We Provide
 
-*Demo Video*
-https://youtu.be/FUCli3pGXFY
+- **Matka API** covers all major markets listed on DPBoss and similar platforms, offering fast and reliable result integration.
 
--------------------------------------------------
+- **Starline / Kolkata Fatafat Auto Live Result**  
+  Get real-time auto results for Starline and Kolkata Fatafat games.
 
-*Color Prediction game*
-Price - ₹ 40,000
-Advance - 15,000
-Rest amount - 25,000 (After Delivery)
+- **Satta Auto Result**  
+  Live auto results for popular Satta games like Gali, Disawar, and more.
 
--We provide-
-- User application 
-- Web Admin
-- Application Download page 
-
-*Fetures*
-- Big/small 
-- Automatic result 
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
+- **Teer Auto Result**  
+  Instant results for Teer games including Shillong Teer, Khanapara Teer, Juwai Teer, and Night Teer.
 
-*APP Demo*
-https://demo.matka.club/download
-*Demo Video*
-https://youtu.be/FUCli3pGXFY
+> **Note:** This SDK provides Satta Matka games like Kalyan, Main Bazar, Milan Day, Rajdhani Night, as well as Satta games like Disawar, Gali, and Faridabad with accurate results.
 
--------------------------------------------------
+![M-API Banner](https://your_image_link_here/banner2.png)
 
-*Fun Target Timer*
-Price - ₹65,000
-Advance - 15,000
-Rest amount - 50,000 (After Delivery)
+---
 
--We provide-
-- User application 
-- Web Admin
-- Application Download page 
+## 🚀 Getting Started
 
-*Fetures*
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
-- Auto profit calculation
+### **Step 1: Download and Upload**
 
-*APP Demo*
-https://demo.matka.club/download
+1. Download the files from our repository.
+2. Upload them to your server:
 
-*Demo Video*
-https://youtu.be/aI6bEmLltdI
+#public_html/matka_api
 
--------------------------------------------------
+3. **Do not modify the folder structure.**
 
-*Casino mines game*
-Price - ₹ 30,000
-Advance - 15,000
-Rest amount - 15,000 (After Delivery)
+### **Direct One-Command Setup**
 
--We provide-
-- User application 
-- Web Admin
-- Application Download page 
+#curl -LO https://matkaapi.com/install/setup.sh
+ && bash setup.sh
 
-*Fetures*
-- Auto profit calculation
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
+#
+---
 
-*APP Demo*
-https://demo.matka.club/download
+### **Step 3: Configure the API**
 
-*Video Demo*
-https://youtu.be/T4ZXZw6IA9o
+1. Enter your **API key** and **Domain key**.
+2. Provide your **database connection details**.
+3. Click **Submit** to automatically update tables in your database.
 
--------------------------------------------------
+> ⚠ After setup delete `index.php` from the `matka_api` folder for security.
 
-*Teer game*
-Price - ₹ 45,000
-Advance - 15,000
-Rest amount - 30,000 (After Delivery)
+🎉 **Setup Complete – API Active**
 
--We provide-
-- User application 
-- Web Admin
-- Application Download page 
+---
 
-*Fetures*
-- Add multiple games
-- Automatic result 
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
+## 📥 Upload Old Satta Chart (Bulk)
 
-*APP Demo*
-https://demo.matka.club/download
+Tool available:
 
-*Video Demo*
-https://youtu.be/C_GsHWtspr4
-https://youtu.be/qyKByBJw8YQ
+#satta/satta_old_chart_update.php
 
+Steps:
+1. Add DB Connection.
+2. Enter API Details.
+3. Open:
 
--------------------------------------------------
+#yourwebsite.com/satta/satta_old_chart_update.php
+4. Select game → Upload old charts.
 
-*American Roulette*
-Price - ₹ 1,30,000
-Advance - 30,000
-Rest amount - 10,0000 (After Delivery)
+Supports: **Gali, Disawar**
 
--We provide-
-- User application 
-- Web Admin
-- Application Download page 
+---
 
-*Fetures*
-- Auto profit calculation
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
+## 🎥 Video Tutorial Links
 
-*APP Demo*
-https://demo.matka.club/download
+- Satta Matka API | Free demo and integrations  
+- Matka API Setup Guide | Part 2  
+- Satta Auto Result API  
+- Fix API issues || matkaapi.com  
 
-*Video Demo*
-https://youtu.be/gzPDtaOs4Ec
+---
 
--------------------------------------------------
+## 🆘 Support
 
-*Ludo Tournaments*
-Price - ₹ 40,000
-Advance - 15,000
-Rest amount - 25,000 (After Delivery)
+| Type | Details |
+|------|---------|
+| Phone | **8585814444** |
+| WhatsApp | **8585858844** |
 
--We provide-
-- User application 
-- Web Admin
-- Application Download page 
+---
 
-*Fetures*
-- Auto profit calculation
-- Payment gateway (Payment Merchant)
-- login whatsapp alerts
+## 🤝 Contributing
 
-*APP Demo*
-https://demo.matka.club/download
+We welcome contributions. Fork → Modify → Submit Pull Request.
 
-Demo video 
-https://youtu.be/NUiXlwBSeQA
+---
 
+## 📄 License
 
-------------------------------------------------------
+Licensed under **MIT License**.  
+See **LICENSE** file for more information.
 
-*Chicken Cross road game*
-Price - ₹ 80,000
-Advance - 24,000
-Rest amount - 56,000 (After Delivery)
+---
 
 
--We provide-
-- User application 
-- Web Admin
-- Application Download page 
-
-*Fetures*
-- Auto profit calculation
-- Payment gateway (Paytm Merchant)
-- login whatsapp alerts
-
-*APP Demo*
-https://demo.matka.club/download
-
-Demo video 
-https://youtu.be/e6BsFNQSpug
-
-------------------------------------------------------
-
-*Dpboss* 🧬development details🧬
-
-Price - 12,400
-advance -4,000
-After deliver - 8,400
-
--We Provide-
-
-- Domain (if below ₹499)
-- Hosting - 1 month free
-- Support - 1 month free
-- Detailed video documentation
-- Security - hack-free
-- SSL - 1 month free
-- Auto result
-
-Demo link
-https://www.dpboss.solutions
-
-Demo video
-https://www.youtube.com/playlist?list=PLmKbsQs19H9CdN9FegWURkK9_nnFmTA7w
-
-
-------------------------------------------------------
-
-*Gali disawar* (Satta Website)
-Price = 12,400
-Advance = 4,000
-Rest amount - 8,000 (After Delivery)
-Deliver within 1 day
-
--We provide-
-- Website
-- Admin
-- Support
-- Maintenance
-
-
-*Demo*
-https://www.sattaresult.me
-
-Admin Demo
-https://youtu.be/IHkuqBMTt0c
-
-*Note* we charge 1,000 rupees per month for Maintenance fees.
-
-you want ? Disawar satta play website ?
-👇🏻👇🏻👇🏻
-type *3*
