@@ -1,108 +1,85 @@
-# Matka API – Fast, Secure & Free Trial Available
+# Matka API - Fast, Secure & Free Trial Available
 
-Matka API offers you a fast, reliable service along with an instant integration kit. You can easily install the simple kit, and a demo code will also be provided to you. Remote support will be available to assist you during the integration process. Additionally, you can download the complete Postman collection to test all API endpoints live.
+**Matka API** offers you a fast, reliable service along with an instant integration kit. You can easily install the simple kit, and a demo code will also be provided to you. Remote support will be available to assist you during the integration process.
+Additionally, you can download the complete Postman collection to test all API endpoints live.
 
-![Banner](https://your_image_link_here/banner1.png)
+[![Matka Result](https://www.matkaapi.com/images/matka-result.png)](https://www.postman.com/gowebs/satta-matka-auto-result-api/)
 
----
+## 📡 What We Provide
+🎯 **Matka API**
+covers all major markets listed on DPBoss and similar platforms, offering fast and reliable result integration.
 
-## 🧩 What We Provide
+🌟 **Starline / Kolkata Fatafat** Auto Live Result
+Get real-time auto results for Starline and Kolkata Fatafat games.
 
-- **Matka API** covers all major markets listed on DPBoss and similar platforms, offering fast and reliable result integration.
+🏆 **Satta Auto Result**
+Live auto results for popular Satta games like Gali, Disawar, and more.
 
-- **Starline / Kolkata Fatafat Auto Live Result**  
-  Get real-time auto results for Starline and Kolkata Fatafat games.
+🏹 **Teer Auto Result**
+Instant results for Teer games including Shillong Teer, Khanapara Teer, Juwai Teer, and Night Teer.
 
-- **Satta Auto Result**  
-  Live auto results for popular Satta games like Gali, Disawar, and more.
+> **Note:** This SDK provides Satta Matka games like Kalyan, Main Bazar, Milan Day, and Rajdhani Night, as well as Satta games like Disawar, Gali, and Faridabad with accurate results.
 
-- **Teer Auto Result**  
-  Instant results for Teer games including Shillong Teer, Khanapara Teer, Juwai Teer, and Night Teer.
+[![Satta Matka API | Free demo and free integrations](https://www.matkaapi.com/images/matka-api-github.png)](https://www.youtube.com/watch?v=fXuS5Cl7nm0&list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc "Satta Matka API | Free demo and free integrations")
+## Getting Started
 
-> **Note:** This SDK provides Satta Matka games like Kalyan, Main Bazar, Milan Day, Rajdhani Night, as well as Satta games like Disawar, Gali, and Faridabad with accurate results.
+To set up the Matka API, follow these steps:
 
-![M-API Banner](https://your_image_link_here/banner2.png)
-
----
-
-## 🚀 Getting Started
-
-### **Step 1: Download and Upload**
+### Step 1: Download and Upload
 
 1. Download the files from our repository.
-2. Upload them to your server:
+2. Upload the downloaded files to your server in the `{public_html/matka_api}` directory.
+3. **Important:** Do not modify the folder structure.
 
-#public_html/matka_api
+## Run the comand.
+for direct install 
+- `curl -LO https://matkaapi.com/install/setup.sh &&  bash setup.sh`
 
-3. **Do not modify the folder structure.**
+### Step 2: Purchase the API
 
-### **Direct One-Command Setup**
+1. Visit our website at [matkaapi.com](https://matkaapi.com/) to purchase an API key.
+2. After a successful purchase, run the following URL in your browser:  
+   `yourwebsite.com/matka_api/index.php`
 
-#curl -LO https://matkaapi.com/install/setup.sh
- && bash setup.sh
+### Step 3: Configure the API
 
-#
----
+1. Enter your **API key** and **domain key**.
+2. Provide the necessary **database connection** details.
+3. Click "Submit" to automatically update the required tables in your database.
 
-### **Step 3: Configure the API**
+> **Important:** Once the setup is complete, delete the `index.php` file from the `matka_api` directory for security reasons.
 
-1. Enter your **API key** and **Domain key**.
-2. Provide your **database connection details**.
-3. Click **Submit** to automatically update tables in your database.
+> **Congratulations!** You have successfully set up the Matka API.
 
-> ⚠ After setup delete `index.php` from the `matka_api` folder for security.
+## Upload Satta Old Chart in Bulk
 
-🎉 **Setup Complete – API Active**
+We provide a page: `satta/satta_old_chart_update.php`
 
----
+**Step 1:** Add your **database connection**  
+**Step 2:** Add your **API details**  
+**Step 3:** Go to `https://yourwebsite.com/satta/satta_old_chart_update.php`, select a **game**, and **insert/update** old Satta results.
 
-## 📥 Upload Old Satta Chart (Bulk)
+Supports Satta games like **Gali** and **Disawar**
 
-Tool available:
+## Video Docs
 
-#satta/satta_old_chart_update.php
-
-Steps:
-1. Add DB Connection.
-2. Enter API Details.
-3. Open:
-
-#yourwebsite.com/satta/satta_old_chart_update.php
-4. Select game → Upload old charts.
-
-Supports: **Gali, Disawar**
-
----
-
-## 🎥 Video Tutorial Links
-
-- Satta Matka API | Free demo and integrations  
-- Matka API Setup Guide | Part 2  
-- Satta Auto Result API  
-- Fix API issues || matkaapi.com  
-
----
-
-## 🆘 Support
-
-| Type | Details |
-|------|---------|
-| Phone | **8585814444** |
-| WhatsApp | **8585858844** |
-
----
-
-## 🤝 Contributing
-
-We welcome contributions. Fork → Modify → Submit Pull Request.
-
----
-
-## 📄 License
-
-Licensed under **MIT License**.  
-See **LICENSE** file for more information.
-
----
+- **<a href="https://youtu.be/fXuS5Cl7nm0?list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc" target="_blank">Satta Matka API | Free demo and free integrations</a>**
+- **<a href="https://youtu.be/CuZ50XpMapo?list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc" target="_blank">Matka API, How to setup Part 2</a>**
+- **<a href="https://youtu.be/djQRcMYSYRk?list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc" target="_blank">Matka Api, Satta matka auto result</a>**
+- **<a href="https://youtu.be/BvJTIa5gUbU?list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc" target="_blank">Matka API problem ? , How to solved Satta matka API || matkaapi.com</a>**
 
 
+## Support
+
+If you need help or have any questions, please feel free to contact us:
+
+- **Phone:** [8585814444](tel:+918585814444)
+- **WhatsApp:** [8585858844](https://wa.me/918585858844)
+
+## Contributing
+
+We welcome contributions from the community! If you'd like to contribute to this project, please fork the repository, create a new branch, and submit a pull request.
+
+## License
+
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
