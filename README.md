@@ -73,8 +73,8 @@ Supports Satta games like **Gali** and **Disawar**
 
 If you need help or have any questions, please feel free to contact us:
 
-- **Phone:** [8585814444](tel:+918585814444)
-- **WhatsApp:** [8585858844](https://wa.me/918585858844)
+- **Phone:** [8585858844](tel:+918585858844)
+- **WhatsApp:** [8100304443](https://wa.gowebs.in/)
 
 ## Contributing
 
