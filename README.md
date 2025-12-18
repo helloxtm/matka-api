@@ -58,13 +58,6 @@ We provide a page: `satta/satta_old_chart_update.php`
 
 Supports Satta games like **Gali** and **Disawar**
 
-## Video Docs
-
-- **<a href="https://youtu.be/fXuS5Cl7nm0?list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc" target="_blank">Satta Matka API | Free demo and free integrations</a>**
-- **<a href="https://youtu.be/CuZ50XpMapo?list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc" target="_blank">Matka API, How to setup Part 2</a>**
-- **<a href="https://youtu.be/djQRcMYSYRk?list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc" target="_blank">Matka Api, Satta matka auto result</a>**
-- **<a href="https://youtu.be/BvJTIa5gUbU?list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc" target="_blank">Matka API problem ? , How to solved Satta matka API || matkaapi.com</a>**
-
 
 ## Support
 
