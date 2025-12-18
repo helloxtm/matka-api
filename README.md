@@ -17,8 +17,7 @@ Live auto results for popular Satta games like Gali, Disawar, and more.
 Instant results for Teer games including Shillong Teer, Khanapara Teer, Juwai Teer, and Night Teer.
 
 > **Note:** This SDK provides Satta Matka games like Kalyan, Main Bazar, Milan Day, and Rajdhani Night, as well as Satta games like Disawar, Gali, and Faridabad with accurate results.
-
-[![Satta Matka API | Free demo and free integrations](https://www.matkaapi.com/images/matka-api-github.png)](https://www.youtube.com/watch?v=fXuS5Cl7nm0&list=PLmKbsQs19H9C-4gyUg9rEtkJMS-2hNLlc "Satta Matka API | Free demo and free integrations")
+> 
 ## Getting Started
 
 To set up the Matka API, follow these steps:
