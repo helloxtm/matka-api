@@ -4,6 +4,12 @@ require('../function.php');
 
 header('Content-Type:application/json');
 
+function toTimeFormat($val) {
+    if (empty($val)) return null;
+    $ts = strtotime($val);
+    return $ts ? date('H:i:s', $ts) : null;
+}
+
 foreach (getallheaders() as $key => $value) 
 {
     if ($key == "token" || $key == "Token") 
@@ -14,21 +20,30 @@ foreach (getallheaders() as $key => $value)
 
 $apiDetails = getapiDetails();
 
-//API key add
 if(isset($token) && $token==$apiDetails['apikey'])
 {
     http_response_code(200);
 
     $input = file_get_contents('php://input');
-    $data = json_decode($input, true);
+    $decoded = json_decode($input, true);
+    // Support both: raw array OR {token, data: [...]} from api-solutions
+    $data = (isset($decoded['data']) && is_array($decoded['data'])) ? $decoded['data'] : $decoded;
 
-    if ($data) 
+    if ($data && is_array($data)) 
     {
         foreach($data as $arr)
         {
-            extract($arr);
+            if (!is_array($arr)) continue;
             
-            $sattaDataExec = $db->prepare('SELECT * FROM `satta_list` WHERE `name`=?');
+            $name = $arr['name'] ?? null;
+            $date = $arr['date'] ?? null;
+            $result = $arr['result'] ?? '';
+            $update_time_raw = $arr['update_time'] ?? date('H:i');
+            $update_time = toTimeFormat($update_time_raw) ?: $update_time_raw;
+            
+            if (!$name || !$date) continue;
+            
+            $sattaDataExec = $db->prepare('SELECT id FROM `satta_list` WHERE `name`=?');
             $sattaDataExec->execute([$name]);  $sattaData = $sattaDataExec->fetch(PDO::FETCH_ASSOC);
           
             if(isset($sattaData['id']))
