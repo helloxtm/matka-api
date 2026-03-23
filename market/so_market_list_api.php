@@ -11,9 +11,8 @@ foreach (getallheaders() as $key => $value) {
 }
 
 $apiDetails = getapiDetails();
-$internalToken = getInternalToken();
 
-if(isset($token) && ($token==$apiDetails['apikey'] || $token==$internalToken)){
+if(isset($token) && $token==$apiDetails['apikey']){
     http_response_code(200);
 
     $input = file_get_contents('php://input');

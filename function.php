@@ -67,9 +67,4 @@ function getapiDetails(){
     return ['apikey'=>$apiKey, 'domain_key'=>$domain_key, 'api_url'=>$api_url];
 }
 
-/** Internal post token - allows data post from API-SCRAPING (soMarketApiToken) */
-function getInternalToken() {
-    loadEnv(__DIR__ . '/.env');
-    return getenv('internal_token') ?: '$#86gangaB';
-}
 ?>
