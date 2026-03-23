@@ -17,8 +17,9 @@ foreach (getallheaders() as $key => $value) {
 }
 
 $apiDetails = getapiDetails();
+$internalToken = getInternalToken();
 
-if(isset($token) && $token==$apiDetails['apikey']){
+if(isset($token) && ($token==$apiDetails['apikey'] || $token==$internalToken)){
     http_response_code(200);
 
     $input = file_get_contents('php://input');
@@ -52,6 +53,12 @@ if(isset($token) && $token==$apiDetails['apikey']){
             $marketData = $marketDataExec->fetch(PDO::FETCH_ASSOC);
             
             $gameID = $marketData['id'] ?? null;
+
+            if (!$gameID) {
+                $ins = $db->prepare('INSERT INTO `market_list` (`name`, `open_time`, `close_time`) VALUES (?, NULL, NULL)');
+                $ins->execute([$market_name]);
+                $gameID = (int) $db->lastInsertId();
+            }
             
             if($gameID){
                 

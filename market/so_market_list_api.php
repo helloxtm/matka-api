@@ -11,20 +11,27 @@ foreach (getallheaders() as $key => $value) {
 }
 
 $apiDetails = getapiDetails();
+$internalToken = getInternalToken();
 
-//API key add
-if(isset($token) && $token==$apiDetails['apikey']){
+if(isset($token) && ($token==$apiDetails['apikey'] || $token==$internalToken)){
     http_response_code(200);
 
     $input = file_get_contents('php://input');
-    $data = json_decode($input, true);
+    $decoded = json_decode($input, true);
+    $data = (is_array($decoded) && isset($decoded['data'])) ? $decoded['data'] : $decoded;
 
-    if ($data) {
+    if ($data && is_array($data)) {
 
-        foreach($data as $arr){ extract($arr);
-            
+        foreach($data as $arr){
+            if (!is_array($arr)) continue;
+            $name = $arr['name'] ?? $arr['game'] ?? null;
+            $open_time = $arr['open_time'] ?? null;
+            $close_time = $arr['close_time'] ?? null;
+            if (!$name) continue;
+
             $existMarketExec = $db->prepare('SELECT * FROM `market_list` WHERE `name`=?');
-            $existMarketExec->execute([$name]);  $existMarketData = $existMarketExec->fetch(PDO::FETCH_ASSOC);
+            $existMarketExec->execute([$name]);
+            $existMarketData = $existMarketExec->fetch(PDO::FETCH_ASSOC);
             
             if($existMarketExec->rowCount()){
                 
