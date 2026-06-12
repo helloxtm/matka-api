@@ -13,16 +13,17 @@ Database **zaroori nahi** — pehle cron chalao, JSON dekho, phir apne DB mein s
 ## Table of contents
 
 1. [Plan purchase / recharge](#1-plan-purchase--recharge)
-2. [Dashboard setup (domain + domain_key)](#2-dashboard-setup-domain--domain_key)
-3. [Server requirements](#3-server-requirements)
-4. [Upload & configure this kit](#4-upload--configure-this-kit)
-5. [Test connection](#5-test-connection)
-6. [Cron URLs — Market / Starline / Satta](#6-cron-urls--market--starline--satta)
-7. [MAPI parameters (API detail)](#7-mapi-parameters-api-detail)
-8. [Plan limits (today vs old data)](#8-plan-limits-today-vs-old-data)
-9. [Save data to your database](#9-save-data-to-your-database)
-10. [Common errors](#10-common-errors)
-11. [Support](#11-support)
+2. [Price Details](#2-price-details)
+3. [Dashboard setup (domain + domain_key)](#3-dashboard-setup-domain--domain_key)
+4. [Server requirements](#4-server-requirements)
+5. [Upload & configure this kit](#5-upload--configure-this-kit)
+6. [Test connection](#6-test-connection)
+7. [Cron URLs — Market / Starline / Satta](#7-cron-urls--market--starline--satta)
+8. [MAPI parameters (API detail)](#8-mapi-parameters-api-detail)
+9. [Plan limits (today vs old data)](#9-plan-limits-today-vs-old-data)
+10. [Save data to your database](#10-save-data-to-your-database)
+11. [Common errors](#11-common-errors)
+12. [Support](#12-support)
 
 ---
 
@@ -31,9 +32,7 @@ Database **zaroori nahi** — pehle cron chalao, JSON dekho, phir apne DB mein s
 1. Open [https://www.matkaapi.com](https://www.matkaapi.com)
 2. **Login / Register** → Dashboard
 3. **Domains** — apna website domain add karo (e.g. `yourdomain.com`)
-4. **Price / Plans** se plan choose karo:
-   - **Monthly** — today result only
-   - **Half-Yearly / Yearly** — old date + full history (`list=1`) yearly plan par
+4. **Price / Plans** se plan choose karo — full pricing [Price Details](#2-price-details) mein
 5. Payment complete hone ke baad plan **active** ho jata hai (`f_from` – `t_to` dates dashboard par dikhengi)
 6. **Recharge / renew:** same dashboard se plan extend karo jab `Plan expired` error aaye
 
@@ -41,7 +40,45 @@ Database **zaroori nahi** — pehle cron chalao, JSON dekho, phir apne DB mein s
 
 ---
 
-## 2. Dashboard setup (domain + domain_key)
+## 2. Price Details
+
+Plans [matkaapi.com](https://www.matkaapi.com) par — **har domain** ke liye alag plan activate hota hai.
+
+### Plan & pricing
+
+| Plan | Duration | Price | Integration fees |
+|------|----------|-------|------------------|
+| **Monthly** | 30 days | **₹499** / month | **₹1,500** |
+| **Half-Yearly** | 184 days | **₹1,999** / 6 months *(Save 50%)* | **₹1,000** |
+| **Yearly** | 365 days | **₹4,999** / 1 year | **₹799** |
+
+**Integration fees** = one-time setup help (yeh PHP kit upload, `config.php`, cron, optional database). Longer plan par fees kam.
+
+### Features comparison
+
+| Feature | Monthly | Half-Yearly | Yearly |
+|---------|:-------:|:-----------:|:------:|
+| All API (Market, Starline, Satta, Teer) | ✅ | ✅ | ✅ |
+| PHP KIT (yeh folder) | ✅ | ✅ | ✅ |
+| 2 Way API | ✅ | ✅ | ✅ |
+| Old Chart (`date=` + `list=1` history) | ❌ | ❌ | ✅ |
+| 24/7 Support | ❌ | ❌ | ✅ |
+
+### API access by plan
+
+| Plan | Today live result | Previous date (`date=`) | Full history (`list=1`) |
+|------|-------------------|-------------------------|-------------------------|
+| Monthly | ✅ | ❌ | ❌ |
+| Half-Yearly | ✅ | ❌ | ❌ |
+| Yearly | ✅ | ✅ | ✅ (max 500 rows) |
+
+Monthly / Half-Yearly par sirf **aaj ka result** API se milega. Purana chart / old date ke liye **Yearly plan** lo.
+
+Plan buy ya integration help: WhatsApp [7205225513](https://wa.me/917205225513)
+
+---
+
+## 3. Dashboard setup (domain + domain_key)
 
 ### Domain add
 
@@ -72,7 +109,7 @@ API sirf **whitelist IP** se data deti hai:
 
 ---
 
-## 3. Server requirements
+## 4. Server requirements
 
 - PHP **7.4+**
 - PHP extension: **curl**
@@ -81,7 +118,7 @@ API sirf **whitelist IP** se data deti hai:
 
 ---
 
-## 4. Upload & configure this kit
+## 5. Upload & configure this kit
 
 ### Step 1 — Upload
 
@@ -115,7 +152,7 @@ PHP files executable via web server (normal hosting default OK).
 
 ---
 
-## 5. Test connection
+## 6. Test connection
 
 Browser mein open karo:
 
@@ -137,13 +174,13 @@ https://yourdomain.com/matka-api/index.php
 }
 ```
 
-Agar `mapi_test.status: false` — [Common errors](#10-common-errors) dekho.
+Agar `mapi_test.status: false` — [Common errors](#11-common-errors) dekho.
 
 Setup ke baad security ke liye `index.php` hata sakte ho ya password protect karo.
 
 ---
 
-## 6. Cron URLs — Market / Starline / Satta
+## 7. Cron URLs — Market / Starline / Satta
 
 Base path: `https://yourdomain.com/matka-api/`
 
@@ -229,7 +266,7 @@ Apne website par dikhane ke liye `mapi.data` use karo ya database save enable ka
 
 ---
 
-## 7. MAPI parameters (API detail)
+## 8. MAPI parameters (API detail)
 
 Auth (har request):
 
@@ -279,7 +316,7 @@ Full Postman tests: import `postman/mapi.json` in Postman, set variable `domain_
 
 ---
 
-## 8. Plan limits (today vs old data)
+## 9. Plan limits (today vs old data)
 
 | Plan (`package.month`) | Today result | Previous `date` | `list=1` history |
 |------------------------|----------------|-----------------|------------------|
@@ -302,7 +339,7 @@ Your Request Limit Reached. Contact admin.
 
 ---
 
-## 9. Save data to your database
+## 10. Save data to your database
 
 Kit by default **database use nahi karta**.
 
@@ -324,7 +361,7 @@ Aap apne existing tables use kar sakte ho — sirf `db_save.php` mein INSERT/UPD
 
 ---
 
-## 10. Common errors
+## 11. Common errors
 
 | Message | Solution |
 |---------|----------|
@@ -340,7 +377,7 @@ Aap apne existing tables use kar sakte ho — sirf `db_save.php` mein INSERT/UPD
 
 ---
 
-## 11. Support
+## 12. Support
 
 - Website: [https://www.matkaapi.com](https://www.matkaapi.com)
 - WhatsApp: [7205225513](https://wa.me/917205225513)
