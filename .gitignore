@@ -1,0 +1,6 @@
+config.php
+database/config.php
+market/db_save.php
+starline/db_save.php
+satta/db_save.php
+.env
