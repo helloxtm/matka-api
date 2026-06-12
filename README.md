@@ -86,6 +86,27 @@ Plan buy ya integration help: WhatsApp [7205225513](https://wa.me/917205225513)
 2. Add domain: `yourdomain.com` (without `http://` or `www`)
 3. Copy **Domain Key** (`unique_key`) — yahi `domain_key` hai
 
+### Auth rules (Postman vs server)
+
+MAPI request **device** ya **server** detect karta hai:
+
+| Call from | Security | `domain` param |
+|-----------|----------|----------------|
+| **Postman / browser / app** | IP whitelist | Optional (Referer se bhi check) |
+| **Server** (cron, PHP curl, yeh kit) | IP whitelist + **domain match required** | **Required** — dashboard domain jaisa |
+
+Server-side example:
+
+```
+?market=all&domain_key=YOUR_KEY&domain=yourdomain.com
+```
+
+Postman example (domain optional):
+
+```
+?market=all&domain_key=YOUR_KEY
+```
+
 ### IP whitelist (important)
 
 API sirf **whitelist IP** se data deti hai:
@@ -98,7 +119,7 @@ API sirf **whitelist IP** se data deti hai:
 
 **Cron server ka public IP** dashboard → Domains → IP field mein set karo.
 
-> Browser se test = aapka current IP. Cron = hosting server ka IP. Dono alag ho sakte hain — cron ke liye server IP whitelist karo.
+> Postman = aapka PC/mobile IP whitelist karo. Cron = hosting server IP whitelist karo.
 
 ### config.php mein yeh values
 
@@ -368,7 +389,8 @@ Aap apne existing tables use kar sakte ho — sirf `db_save.php` mein INSERT/UPD
 | `domain_key is required` / empty | `config.php` mein domain_key set karo |
 | `Invalid domain key` | Dashboard se sahi key copy karo |
 | `Please update your IP from dashboard` | Server public IP dashboard mein add karo |
-| `Domain not matched` | `domain` param galat — config ya dashboard domain same rakho |
+| `Domain not matched` | Server call par `domain=` dashboard domain se match hona chahiye |
+| `domain is required for server-side requests` | Cron/curl/kit se call — `domain=yourdomain.com` add karo |
 | `Plan expired or not active` | Plan recharge karo |
 | `Your Request Limit Reached` | Plan upgrade / limit badhao |
 | `OLD Data not available for Monthly Plan` | Yearly plan lo ya sirf today cron chalao |

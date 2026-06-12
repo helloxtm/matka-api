@@ -91,6 +91,7 @@ final class MapiClient
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_SSL_VERIFYHOST => 2,
             CURLOPT_USERAGENT => 'MatkaAPI-Client/2.0',
+            CURLOPT_HTTPHEADER => ['X-Matka-Source: server'],
         ]);
 
         $body = curl_exec($ch);
@@ -133,6 +134,7 @@ final class MapiClient
             CURLOPT_SSL_VERIFYPEER => true,
             CURLOPT_SSL_VERIFYHOST => 2,
             CURLOPT_USERAGENT => 'MatkaAPI-Client/2.0',
+            CURLOPT_HTTPHEADER => ['X-Matka-Source: server'],
         ]);
 
         $body = curl_exec($ch);
