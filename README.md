@@ -93,10 +93,11 @@ MAPI request **device** ya **server** detect karta hai:
 
 | Call from | Security | `domain` param |
 |-----------|----------|----------------|
-| **Postman / browser / app** | IP whitelist + **domain must match key** | Required (ya browser Referer same domain) |
-| **Server** (cron, PHP curl, yeh kit) | IP whitelist + **domain match required** | **Required** — dashboard domain jaisa |
+| **Local PC / Postman** | IP whitelist | Optional — sirf `domain_key` enough |
+| **Live website** (browser) | IP whitelist + Referer match | Referer registered domain hona chahiye |
+| **Server** (cron, PHP curl, yeh kit) | IP whitelist + **domain match** | **Required** — dashboard domain |
 
-> `abc.com` se call + `hello.com` ka `domain_key` = **block** (`Domain not matched`).
+> `abc.com` live site + `hello.com` ka key = **block**. Localhost / Postman = **allow** (IP whitelist).
 
 Server-side example:
 
@@ -104,10 +105,10 @@ Server-side example:
 ?market=all&domain_key=YOUR_KEY&domain=yourdomain.com
 ```
 
-Postman example (`domain` = key owner domain):
+Postman / local test (`domain` optional):
 
 ```
-?market=all&domain_key=YOUR_KEY&domain=yourdomain.com
+?market=all&domain_key=YOUR_KEY
 ```
 
 ### IP whitelist (important)
@@ -477,8 +478,7 @@ Aap apne existing tables use kar sakte ho — sirf `db_save.php` mein INSERT/UPD
 | `Invalid domain key` | Dashboard se sahi key copy karo |
 | `Please update your IP from dashboard` | Server public IP dashboard mein add karo |
 | `Domain not matched` | Server call par `domain=` dashboard domain se match hona chahiye |
-| `domain is required` | `domain=yourdomain.com` add karo (key owner domain) |
-| `domain is required for server-side requests` | Cron/curl/kit se call — `domain=` key owner domain |
+| `domain is required for server-side requests` | Server/cron/kit — `domain=` key owner domain add karo |
 | `Plan expired or not active` | Plan recharge karo |
 | `Your Request Limit Reached` | Plan upgrade / limit badhao |
 | `OLD Data not available for Monthly Plan` | Yearly plan lo ya sirf today cron chalao |
