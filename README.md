@@ -8,6 +8,8 @@ Yeh PHP kit aapke **apne server** par upload karke Matka API se live results aut
 
 Database **zaroori nahi** — pehle cron chalao, JSON dekho, phir apne DB mein save karo (guide: `docs/DATABASE.md`).
 
+[![Matka Fast Result API — Postman Collection](https://www.matkaapi.com/images/matka-result.png)](https://www.postman.com/gowebs/matka-api-satta-matka-auto-result-api)
+
 ---
 
 ## Table of contents
