@@ -4,11 +4,13 @@ Yeh PHP kit aapke **apne server** par upload karke Matka API se live results aut
 
 - **API source:** `https://www.matkaapi.com/mapi/`
 - **Auth:** `domain_key` (har domain ka alag key)
-- **Reference:** `postman/mapi.json` (Postman collection — same URLs & params)
+- **Reference:** [Postman Collection](https://www.postman.com/gowebs/matka-api-satta-matka-auto-result-api) · local file `postman/mapi.json`
 
 Database **zaroori nahi** — pehle cron chalao, JSON dekho, phir apne DB mein save karo (guide: `docs/DATABASE.md`).
 
 [![Matka Fast Result API — Postman Collection](https://www.matkaapi.com/images/matka-result.png)](https://www.postman.com/gowebs/matka-api-satta-matka-auto-result-api)
+
+**Postman Collection:** [Matka API — Satta Matka Auto Result API](https://www.postman.com/gowebs/matka-api-satta-matka-auto-result-api)
 
 ---
 
