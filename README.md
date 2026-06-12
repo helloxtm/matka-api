@@ -93,8 +93,10 @@ MAPI request **device** ya **server** detect karta hai:
 
 | Call from | Security | `domain` param |
 |-----------|----------|----------------|
-| **Postman / browser / app** | IP whitelist | Optional (Referer se bhi check) |
+| **Postman / browser / app** | IP whitelist + **domain must match key** | Required (ya browser Referer same domain) |
 | **Server** (cron, PHP curl, yeh kit) | IP whitelist + **domain match required** | **Required** — dashboard domain jaisa |
+
+> `abc.com` se call + `hello.com` ka `domain_key` = **block** (`Domain not matched`).
 
 Server-side example:
 
@@ -102,10 +104,10 @@ Server-side example:
 ?market=all&domain_key=YOUR_KEY&domain=yourdomain.com
 ```
 
-Postman example (domain optional):
+Postman example (`domain` = key owner domain):
 
 ```
-?market=all&domain_key=YOUR_KEY
+?market=all&domain_key=YOUR_KEY&domain=yourdomain.com
 ```
 
 ### IP whitelist (important)
@@ -475,7 +477,8 @@ Aap apne existing tables use kar sakte ho — sirf `db_save.php` mein INSERT/UPD
 | `Invalid domain key` | Dashboard se sahi key copy karo |
 | `Please update your IP from dashboard` | Server public IP dashboard mein add karo |
 | `Domain not matched` | Server call par `domain=` dashboard domain se match hona chahiye |
-| `domain is required for server-side requests` | Cron/curl/kit se call — `domain=yourdomain.com` add karo |
+| `domain is required` | `domain=yourdomain.com` add karo (key owner domain) |
+| `domain is required for server-side requests` | Cron/curl/kit se call — `domain=` key owner domain |
 | `Plan expired or not active` | Plan recharge karo |
 | `Your Request Limit Reached` | Plan upgrade / limit badhao |
 | `OLD Data not available for Monthly Plan` | Yearly plan lo ya sirf today cron chalao |
