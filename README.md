@@ -1,74 +1,97 @@
-# Matka API - Fast, Secure & Free Trial Available
+# Matka API — Client Integration Kit (MAPI)
 
-**Matka API** offers you a fast, reliable service along with an instant integration kit. You can easily install the simple kit, and a demo code will also be provided to you. Remote support will be available to assist you during the integration process.
-Additionally, you can download the complete Postman collection to test all API endpoints live.
+Upload this folder to your server (e.g. `public_html/matka-api`). It fetches live results from **https://www.matkaapi.com/mapi/** using your **domain_key** — same as the [Postman collection](postman/mapi.json).
 
-## 📡 What We Provide
-🎯 **Matka API**
-covers all major markets listed on DPBoss and similar platforms, offering fast and reliable result integration.
+No database is required to run cron URLs. JSON is returned so you can save data yourself, or use optional `db_save.php` examples.
 
-🌟 **Starline / Kolkata Fatafat** Auto Live Result
-Get real-time auto results for Starline and Kolkata Fatafat games.
+## Requirements
 
-🏆 **Satta Auto Result**
-Live auto results for popular Satta games like Gali, Disawar, and more.
+- PHP 7.4+ with **curl** extension
+- Active plan on [matkaapi.com](https://www.matkaapi.com)
+- **domain_key** from Dashboard → Domains (`user_domain.unique_key`)
+- Server IP whitelisted in dashboard (first cron call may auto-save IP)
 
-🏹 **Teer Auto Result**
-Instant results for Teer games including Shillong Teer, Khanapara Teer, Juwai Teer, and Night Teer.
+## Quick setup
 
-> **Note:** This SDK provides Satta Matka games like Kalyan, Main Bazar, Milan Day, and Rajdhani Night, as well as Satta games like Disawar, Gali, and Faridabad with accurate results.
-> 
-## Getting Started
+1. Upload entire `matka-api` folder to your hosting.
+2. Edit `config.php`:
+   ```php
+   'domain_key' => 'your_unique_key_from_dashboard',
+   'domain' => 'yourdomain.com',  // optional; auto-detected from URL
+   ```
+3. Open in browser: `https://yourdomain.com/matka-api/index.php` — should return JSON with `mapi_test.status: true`.
+4. Set cron jobs (examples below).
 
-To set up the Matka API, follow these steps:
+## Folder structure
 
-### Step 1: Download and Upload
+```
+matka-api/
+  config.php              ← your domain_key
+  lib/                    ← shared MAPI client (do not edit)
+  market/                 ← Matka / market results
+  starline/               ← Starline / fatafat
+  satta/                  ← Satta / disawar
+  database/               ← optional DB credentials
+  postman/mapi.json       ← API reference
+  docs/DATABASE.md        ← how to save to MySQL
+```
 
-1. Download the files from our repository.
-2. Upload the downloaded files to your server in the `{public_html/matka_api}` directory.
-3. **Important:** Do not modify the folder structure.
+## Cron URLs (hit from browser or server cron)
 
-## Run the comand.
-for direct install 
-- `curl -LO https://matkaapi.com/install/setup.sh &&  bash setup.sh`
+| Module | URL | MAPI call |
+|--------|-----|-----------|
+| Market — today all | `/matka-api/market/update_today.php` | `market=all` |
+| Market — list | `/matka-api/market/update_list.php` | `market_list=1` |
+| Market — single | `/matka-api/market/update_single.php?market=mainbazar` | one market |
+| Starline — today all | `/matka-api/starline/update_today.php` | `game=all` |
+| Starline — list | `/matka-api/starline/update_list.php` | `game_list=1` |
+| Starline — single | `/matka-api/starline/update_single.php?game=kalyanstarline` | one game |
+| Satta — today all | `/matka-api/satta/update_today.php` | `game=all` |
+| Satta — list | `/matka-api/satta/update_list.php` | `satta_list=1` |
+| Satta — single | `/matka-api/satta/update_single.php?game=GALI` | one game |
 
-### Step 2: Purchase the API
+### Example crontab (every 5 minutes)
 
-1. Visit our website at [matkaapi.com](https://matkaapi.com/) to purchase an API key.
-2. After a successful purchase, run the following URL in your browser:  
-   `yourwebsite.com/matka_api/index.php`
+```cron
+*/5 * * * * curl -s "https://yourdomain.com/matka-api/market/update_today.php" >> /tmp/matka-market.log
+*/5 * * * * curl -s "https://yourdomain.com/matka-api/starline/update_today.php" >> /tmp/matka-starline.log
+*/5 * * * * curl -s "https://yourdomain.com/matka-api/satta/update_today.php" >> /tmp/matka-satta.log
+```
 
-### Step 3: Configure the API
+## Response format
 
-1. Enter your **API key** and **domain key**.
-2. Provide the necessary **database connection** details.
-3. Click "Submit" to automatically update the required tables in your database.
+Success:
 
-> **Important:** Once the setup is complete, delete the `index.php` file from the `matka_api` directory for security reasons.
+```json
+{
+  "status": true,
+  "message": "Data fetched from MAPI",
+  "db_saved": false,
+  "mapi": { "status": true, "data": [ ... ] }
+}
+```
 
-> **Congratulations!** You have successfully set up the Matka API.
+Use `mapi.data` to insert into your database (see `docs/DATABASE.md`).
 
-## Upload Satta Old Chart in Bulk
+## Optional: auto-save to MySQL
 
-We provide a page: `satta/satta_old_chart_update.php`
+1. Copy `database/config.example.php` → `database/config.php` (credentials).
+2. In each module copy `db_save.example.php` → `db_save.php`.
+3. Run `schema_example.sql` in that module (or map to your tables).
+4. In `config.php` set `'save_to_database' => true`.
 
-**Step 1:** Add your **database connection**  
-**Step 2:** Add your **API details**  
-**Step 3:** Go to `https://yourwebsite.com/satta/satta_old_chart_update.php`, select a **game**, and **insert/update** old Satta results.
+Cron scripts will call your `db_save.php` after each successful MAPI fetch.
 
-Supports Satta games like **Gali** and **Disawar**
+## MAPI reference
 
+Full params and yearly-plan rules (`list=1`, `date=`) match **postman/mapi.json**:
+
+- `market_api.php`
+- `starline_api.php`
+- `satta_api.php`
+
+Auth: **domain_key** only (per domain).
 
 ## Support
 
-If you need help or have any questions, please feel free to contact us:
-
-- **WhatsApp:** [8100304443](https://wa.gowebs.in)
-
-## Contributing
-
-We welcome contributions from the community! If you'd like to contribute to this project, please fork the repository, create a new branch, and submit a pull request.
-
-## License
-
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for more details.
+WhatsApp: [8100304443](https://wa.gowebs.in)
