@@ -21,9 +21,10 @@ Database **zaroori nahi** — pehle cron chalao, JSON dekho, phir apne DB mein s
 7. [Cron URLs — Market / Starline / Satta](#7-cron-urls--market--starline--satta)
 8. [MAPI parameters (API detail)](#8-mapi-parameters-api-detail)
 9. [Plan limits (today vs old data)](#9-plan-limits-today-vs-old-data)
-10. [Save data to your database](#10-save-data-to-your-database)
-11. [Common errors](#11-common-errors)
-12. [Support](#12-support)
+10. [Rate limit, cache & auto block](#10-rate-limit-cache--auto-block)
+11. [Save data to your database](#11-save-data-to-your-database)
+12. [Common errors](#12-common-errors)
+13. [Support](#13-support)
 
 ---
 
@@ -121,6 +122,8 @@ API sirf **whitelist IP** se data deti hai:
 
 > Postman = aapka PC/mobile IP whitelist karo. Cron = hosting server IP whitelist karo.
 
+Rate limit / auto block detail: [Section 10](#10-rate-limit-cache--auto-block).
+
 ### config.php mein yeh values
 
 ```php
@@ -195,7 +198,7 @@ https://yourdomain.com/matka-api/index.php
 }
 ```
 
-Agar `mapi_test.status: false` — [Common errors](#11-common-errors) dekho.
+Agar `mapi_test.status: false` — [Common errors](#12-common-errors) dekho.
 
 Setup ke baad security ke liye `index.php` hata sakte ho ya password protect karo.
 
@@ -360,7 +363,87 @@ Your Request Limit Reached. Contact admin.
 
 ---
 
-## 10. Save data to your database
+## 10. Rate limit, cache & auto block
+
+`matkaapi.com` MAPI par **public protection** active hai — zyada fast calls se server slow / down hone se bachne ke liye.
+
+### Rate limit
+
+| Rule | Detail |
+|------|--------|
+| Min gap | **30 seconds** — same API + same params dubara call mat karo |
+| Error | HTTP **429**, `error_code: rate_limited` |
+| Wait | Response mein `retry_after` (seconds) — uske baad dubara try karo |
+| Repeat abuse | 5 bar 30 sec rule break → **15 min auto block** |
+
+**Example error:**
+
+```json
+{
+  "status": false,
+  "message": "Too many requests. Minimum interval is 30 seconds.",
+  "error_code": "rate_limited",
+  "retry_after": 22,
+  "min_interval_sec": 30
+}
+```
+
+**Safe intervals (recommended):**
+
+| Use | Interval |
+|-----|----------|
+| Server cron (yeh kit) | **5–15 minutes** |
+| Website live refresh | **30–60 seconds** |
+| Postman test | On demand (30 sec gap same request par) |
+
+> 1–2 second polling mat karo — result har second change nahi hota, API block ho sakti hai.
+
+### Response cache (45 sec)
+
+- Same request ka answer **45 sec** cache hota hai
+- Response mein `cached: true` → normal hai, fresh DB/scrape skip
+- Cache hit par plan **request count (`total_req`) nahi badhta**
+
+### Auto block + alert
+
+Bahut tez / flood calls par **temporary block** (15 minutes):
+
+| Trigger | Limit |
+|---------|-------|
+| Per domain | **40+ calls / minute** |
+| Per IP | **80+ calls / minute** |
+| Rate limit repeat | 5 violations (30 sec rule) |
+
+**Block error:**
+
+```json
+{
+  "status": false,
+  "message": "Too many requests. Temporarily blocked.",
+  "error_code": "temp_blocked",
+  "retry_after": 900,
+  "reason": "flood_per_minute"
+}
+```
+
+**Admin alert log** (matkaapi.com server par, kit par nahi):
+
+```
+mapi/cache/alerts.log
+```
+
+Is file mein `RATE_LIMIT` aur `AUTO_BLOCK` entries admin dekh sakta hai — suspicious domain/IP track karne ke liye.
+
+### Kit / cron ke liye tip
+
+- Yeh kit `domain` + `X-Matka-Source: server` bhejta hai — server rules apply
+- Cron **har 5 min** enough hai (`market/update_today.php` etc.)
+- Agar `rate_limited` aaye → cron interval badhao, `retry_after` respect karo
+- Apne server par fast loop / 1 sec poll mat chalao jo MAPI ko bar-bar hit kare
+
+---
+
+## 11. Save data to your database
 
 Kit by default **database use nahi karta**.
 
@@ -382,7 +465,7 @@ Aap apne existing tables use kar sakte ho — sirf `db_save.php` mein INSERT/UPD
 
 ---
 
-## 11. Common errors
+## 12. Common errors
 
 | Message | Solution |
 |---------|----------|
@@ -394,12 +477,15 @@ Aap apne existing tables use kar sakte ho — sirf `db_save.php` mein INSERT/UPD
 | `Plan expired or not active` | Plan recharge karo |
 | `Your Request Limit Reached` | Plan upgrade / limit badhao |
 | `OLD Data not available for Monthly Plan` | Yearly plan lo ya sirf today cron chalao |
+| `rate_limited` / HTTP 429 | Same call 30 sec ke andar dubara mat karo; `retry_after` wait karo |
+| `temp_blocked` | Bahut fast calls — 15 min wait; check `mapi/cache/alerts.log` (server) |
+| `cached: true` in response | Normal — cached data (45 sec), plan count nahi badhta |
 | `PHP curl extension is required` | Hosting par curl enable karo |
 | `save_to_database` but no save | `db_save.php` copy karo + `database/config.php` |
 
 ---
 
-## 12. Support
+## 13. Support
 
 - Website: [https://www.matkaapi.com](https://www.matkaapi.com)
 - WhatsApp: [7205225513](https://wa.me/917205225513)
