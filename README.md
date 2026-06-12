@@ -268,6 +268,8 @@ GET https://www.matkaapi.com/mapi/satta_api.php?game=GALI&domain_key=YOUR_KEY
 
 cPanel → Cron Jobs mein bhi same URLs add kar sakte ho.
 
+> **Rate limit:** MAPI par 30 sec min gap + flood block hai — cron **5 min** safe hai; 1–2 sec mat chalao. Detail: [Section 10](#10-rate-limit-cache--auto-block).
+
 ### Kit response format
 
 ```json
