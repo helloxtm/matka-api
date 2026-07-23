@@ -7,6 +7,10 @@ Direct API call se live results — **Market**, **Starline**, **Satta**, **Teer*
 - **Postman:** `Matka_API.json` · [Online collection](https://www.postman.com/gowebs/matka-api-satta-matka-auto-result-api)
 - **WhatsApp:** [7205225513](https://wa.me/917205225513)
 
+[![Matka Fast Result API — Postman Collection](https://www.matkaapi.com/images/matka-result.png)](https://www.postman.com/gowebs/matka-api-satta-matka-auto-result-api)
+
+**Postman Collection:** [Matka API — Satta Matka Auto Result API](https://www.postman.com/gowebs/matka-api-satta-matka-auto-result-api)
+
 ---
 
 ## Quick start
