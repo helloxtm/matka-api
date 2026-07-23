@@ -1,0 +1,908 @@
+{
+  "info": {
+    "_postman_id": "a89bcf8d-4dc6-403c-be2d-2bf1bdbdc9c6",
+    "name": "Matka API - Satta Matka, Teer, Starline, Kolkata FF Auto Result API",
+    "description": "## Matka API — Satta Matka, Teer, Starline & Kolkata FF Auto Result API\n\nThis collection provides a complete set of REST API endpoints for fetching **auto-updated lottery and number game results** across four major Indian gaming categories. All requests are authenticated via a `domain_key` parameter and use the `{{baseUrl}}` environment variable as the base URL.\n\n🔗 **GitHub:** [https://github.com/helloxtm/matka-api](https://github.com/helloxtm/matka-api)  \n🌐 **Website:** [https://www.matkaapi.com/](https://www.matkaapi.com/)  \n📞 **Support:** [+91 7205225513 (WhatsApp)](https://wa.me/917205225513)\n\n---\n\n### Folders & Coverage\n\n#### 🎯 Market (Satta Matka)\n\nEndpoints for retrieving Satta Matka market results using `market_api.php`. Supports:\n\n- Fetching the full **market list**\n    \n- Getting results for a **single market** (today, by date, or full history)\n    \n- Fetching **all markets** for today\n    \n- Both **GET** and **POST** methods are available\n    \n\n#### 🏹 Teer API\n\nEndpoints for Teer game results using `teer_api.php`. Supports:\n\n- Fetching the full **game list**\n    \n- Getting results for a **single game** (today, by date, or full history)\n    \n- Fetching **all games** for today\n    \n- Both **GET** and **POST** methods are available\n    \n\n#### ⭐ Starline\n\nEndpoints for Starline game results using `starline_api.php`. Supports:\n\n- Fetching the full **game list** and **baji/slot list**\n    \n- Getting results for a **single game or slot** (today, by date, or full history)\n    \n- Fetching **all games** for today (all slots)\n    \n- Both **GET** and **POST** methods are available\n    \n\n#### 🎲 Satta\n\nEndpoints for Satta game results using `satta_api.php`. Supports:\n\n- Fetching the full **Satta list**\n    \n- Getting results for a **single game** (today, by date, or full history)\n    \n- Fetching **all games** for today\n    \n- Both **GET** and **POST** methods are available\n    \n\n---\n\n### Environment Variables\n\n| Variable | Description |\n| --- | --- |\n| `{{baseUrl}}` | Base URL of the API server |\n| `{{domain_key}}` | Authentication key for your domain |\n| `{{market}}` | Market name/slug for Satta Matka |\n| `{{teer}}` | Game name/slug for Teer |\n| `{{game}}` | Game name/slug for Starline |\n| `{{satta}}` | Game name/slug for Satta |\n| `{{date}}` | Date for historical result queries |\n| `{{baji}}` | Slot/baji identifier for Starline |\n\n---\n\n### 💰 Pricing Plans\n\n#### 🗓️ Monthly — ₹499/month\n\n_For 30 Days_\n\n- ✅ All API\n    \n- ✅ Integration fees ₹1,500\n    \n- ✅ PHP KIT\n    \n- ✅ 2 Way API\n    \n\n---\n\n#### 📅 Half-Yearly — ₹1,999/6-months\n\n_For 184 Days — Save 50%_\n\n- ✅ All API\n    \n- ✅ Integration fees ₹1,000\n    \n- ✅ PHP KIT\n    \n- ✅ 2 Way API\n    \n\n---\n\n#### 📆 Yearly — ₹4,999/1-Year\n\n_For 365 Days_\n\n- ✅ All API\n    \n- ✅ Integration fees ₹799\n    \n- ✅ PHP KIT\n    \n- ✅ 2 Way API\n    \n- ✅ Old Chart\n    \n- ✅ 24/7 Support\n    \n\n---\n\n> **Total Endpoints:** 26 requests across 4 game categories.  \nFor queries or integration support, reach out via [WhatsApp: +91 7205225513](https://wa.me/917205225513)",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "18927213",
+    "_collection_link": "https://go.postman.co/collection/18927213-a89bcf8d-4dc6-403c-be2d-2bf1bdbdc9c6?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "Market",
+      "item": [
+        {
+          "name": "Market List (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/market_api.php?market_list=1&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "market_api.php"
+              ],
+              "query": [
+                {
+                  "key": "market_list",
+                  "value": "1"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "All markets from `market_name`: name, open/close time, sat_day, sun_day, bg_yellow."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Market - Today (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/market_api.php?market={{market}}&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "market_api.php"
+              ],
+              "query": [
+                {
+                  "key": "market",
+                  "value": "{{market}}"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Postman: no domain needed. Uses your public IP."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Market - Previous Date (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/market_api.php?market={{market}}&date={{date}}&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "market_api.php"
+              ],
+              "query": [
+                {
+                  "key": "market",
+                  "value": "{{market}}"
+                },
+                {
+                  "key": "date",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Previous date result — **12 month (yearly) plan only**."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Market - Full History List (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/market_api.php?market={{market}}&list=1&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "market_api.php"
+              ],
+              "query": [
+                {
+                  "key": "market",
+                  "value": "{{market}}"
+                },
+                {
+                  "key": "list",
+                  "value": "1"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Full history (max 500) — **12 month (yearly) plan only**."
+          },
+          "response": []
+        },
+        {
+          "name": "All Markets - Today (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/market_api.php?market=all&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "market_api.php"
+              ],
+              "query": [
+                {
+                  "key": "market",
+                  "value": "all"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "All markets for today."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Market - Today (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "market",
+                  "value": "{{market}}",
+                  "type": "text"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mapi/market_api.php",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "market_api.php"
+              ]
+            },
+            "description": "POST body also supported."
+          },
+          "response": []
+        }
+      ],
+      "description": "# market_api.php\n\n**Endpoint:** `GET/POST {{baseUrl}}/mapi/market_api.php`\n\nMarket result API with IP whitelist (`user_domain` table).\n\n---\n\n## Authentication\n\n| Param | Postman | Live server / website |\n|-------|---------|------------------------|\n| `domain_key` | Required | Required |\n| `domain` | Optional | Optional (Referer verified if sent) |\n\n**Postman:** `domain_key` + `market` — uses your public IP.\n\n---\n\n## Market list\n\n`market_list=1` — all games from `market_name` (no `market` param needed).\n\nEach row: `name`, `open_time`, `close_time`, `sat_day`, `sun_day`, `bg_yellow`\n\n---\n\n## Plan data access\n\n| Plan (`package.month`) | Today | Previous date | `list=1` / history |\n|------------------------|-------|---------------|---------------------|\n| `0` trial / `1` monthly / `6` | Yes | No | No |\n| `12` yearly | Yes | Yes | Yes (max 500) |\n\nError: `OLD Data not available for Monthly Plan`\n\n---\n\n## IP whitelist\n\n• First call (IP empty): IP auto-saved\n• IP matches: result returned\n• IP mismatch: update IP from dashboard\n\n---\n\n## Examples\n\n```\n/mapi/market_api.php?market_list=1&domain_key=YOUR_KEY\n/mapi/market_api.php?market=mainbazar&domain_key=YOUR_KEY\n/mapi/market_api.php?market=mainbazar&domain=example.com&domain_key=YOUR_KEY\n```"
+    },
+    {
+      "name": "Starline",
+      "item": [
+        {
+          "name": "Game List (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/starline_api.php?game_list=1&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "starline_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game_list",
+                  "value": "1"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "All active starline games from `fatafat_game_list`."
+          },
+          "response": []
+        },
+        {
+          "name": "Baji / Slot List (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/starline_api.php?game={{game}}&baji_list=1&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "starline_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{game}}"
+                },
+                {
+                  "key": "baji_list",
+                  "value": "1"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Slots / baji times for one game from `fatafat_baji_list`."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Today All Slots (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/starline_api.php?game={{game}}&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "starline_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{game}}"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "All slots with today's results for one game."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Slot - Today (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/starline_api.php?game={{game}}&baji={{baji}}&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "starline_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{game}}"
+                },
+                {
+                  "key": "baji",
+                  "value": "{{baji}}"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "One slot/baji result for today."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Previous Date (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/starline_api.php?game={{game}}&date={{date}}&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "starline_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{game}}"
+                },
+                {
+                  "key": "date",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Specific date — **12 month (yearly) plan only**."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Full History (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/starline_api.php?game={{game}}&list=1&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "starline_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{game}}"
+                },
+                {
+                  "key": "list",
+                  "value": "1"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Full history (max 500) — **12 month (yearly) plan only**."
+          },
+          "response": []
+        },
+        {
+          "name": "All Games - Today (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/starline_api.php?game=all&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "starline_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "all"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "All games with results for today."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Today (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "game",
+                  "value": "{{game}}",
+                  "type": "text"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mapi/starline_api.php",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "starline_api.php"
+              ]
+            },
+            "description": "POST body also supported."
+          },
+          "response": []
+        }
+      ],
+      "description": "# starline_api.php\n\n**Endpoint:** `GET/POST {{baseUrl}}/mapi/starline_api.php`\n\nStarline (fatafat) API — same auth/plan rules as `market_api.php`.\n\n**Tables:** `fatafat_game_list`, `fatafat_baji_list`, `fatafat_game_result`\n\n---\n\n## Authentication\n\n| Param | Postman | Live server / website |\n|-------|---------|------------------------|\n| `domain_key` | Required | Required |\n| `domain` | Optional | Required (or Referer/Origin) |\n\n**Postman:** `domain_key` + `game` — uses your public IP.\n\n---\n\n## IP whitelist\n\n• First call (IP empty): IP auto-saved\n• IP matches: result returned\n• IP mismatch: `Please update your IP from dashboard`\n\n---\n\n## Plan & request limit\n\n• Active plan = `api_active_status` where **today** is between `f_from` and `t_to` (yearly plan preferred if multiple overlap)\n• Each hit increments `total_req`; limit from `package.req` → `Your Request Limit Reached. Contact admin.`\n\n---\n\n## Plan data access (same as Market)\n\n| Plan (`package.month`) | Today | Previous date | `list=1` / history |\n|------------------------|-------|---------------|---------------------|\n| `0` trial / `1` monthly / `6` | Yes | No | No |\n| `12` yearly | Yes | Yes | Yes (max 500) |\n\nError: `OLD Data not available for Monthly Plan`\n\n---\n\n## Data source\n\n• **Today:** live scrape first (`source: live`), fallback database (`source: database`)\n• **Previous / history:** database only (yearly plan)\n\n---\n\n## Params\n\n| Param | Description |\n|-------|-------------|\n| `game_list=1` | All active games — no `game` needed |\n| `game` | Game slug e.g. `kolkataff` (or `starline` param) |\n| `baji_list=1` / `slots=1` | Slot list for one game |\n| `baji` / `slot` | Single slot number |\n| `date` | `YYYY-MM-DD` (**12 month plan only**) |\n| `list=1` | History (`history`, `old`, `Rtype` also work) |\n| `game=all` | All games for date |\n\n---\n\n## Examples\n\n```\n/mapi/starline_api.php?game_list=1&domain_key=YOUR_KEY\n/mapi/starline_api.php?game=kolkataff&domain_key=YOUR_KEY\n/mapi/starline_api.php?game=kolkataff&baji=1&domain_key=YOUR_KEY\n/mapi/starline_api.php?game=kolkataff&date=2026-06-10&domain_key=YOUR_KEY\n/mapi/starline_api.php?game=kolkataff&list=1&domain_key=YOUR_KEY\n/mapi/starline_api.php?game=all&domain_key=YOUR_KEY\n```"
+    },
+    {
+      "name": "Satta",
+      "item": [
+        {
+          "name": "Satta List (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/satta_api.php?satta_list=1&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "satta_api.php"
+              ],
+              "query": [
+                {
+                  "key": "satta_list",
+                  "value": "1"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "All games from `satta_list`: name, time, bg_yellow."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Today (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/satta_api.php?game={{satta}}&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "satta_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{satta}}"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Today's result for one game."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Previous Date (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/satta_api.php?game={{satta}}&date={{date}}&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "satta_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{satta}}"
+                },
+                {
+                  "key": "date",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Previous date — **12 month (yearly) plan only**."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Full History (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/satta_api.php?game={{satta}}&list=1&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "satta_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{satta}}"
+                },
+                {
+                  "key": "list",
+                  "value": "1"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Full history (max 500) — **12 month plan only**."
+          },
+          "response": []
+        },
+        {
+          "name": "All Games - Today (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/satta_api.php?game=all&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "satta_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "all"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "All games with today's results."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Today (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "game",
+                  "value": "{{satta}}",
+                  "type": "text"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mapi/satta_api.php",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "satta_api.php"
+              ]
+            },
+            "description": "POST body also supported."
+          },
+          "response": []
+        }
+      ],
+      "description": "# satta_api.php\n\n**Delhi Side Satta Live Result**\n\n**Endpoint:** `GET/POST {{baseUrl}}/mapi/satta_api.php`\n\n**Tables:** `satta_list`, `satta_result`\n\nSame auth/plan logic as `market_api.php`.\n\n---\n\n## Authentication\n\n| Param | Postman | Live server |\n|-------|---------|-------------|\n| `domain_key` | Required | Required |\n| `domain` | Optional | Optional (Referer verified if sent) |\n\n**Postman:** `domain_key` + `game` — uses your public IP.\n\n---\n\n## IP whitelist\n\n• First call (IP empty): IP auto-saved\n• IP matches: result returned\n• IP mismatch: `Please update your IP from dashboard`\n\n---\n\n## Plan & request limit\n\n• Active plan = today between `f_from` and `t_to` (yearly `12` preferred if multiple overlap)\n• Each hit increments `total_req`; limit from `package.req`\n• Limit reached: `Your Request Limit Reached. Contact admin.`\n\n---\n\n## Plan data access\n\n| Plan (`package.month`) | Today | Previous date | `list=1` / history |\n|------------------------|-------|---------------|---------------------|\n| `0` trial / `1` monthly / `6` | Yes | No | No |\n| `12` yearly | Yes | Yes | Yes (max 500) |\n\nError: `OLD Data not available for Monthly Plan`\n\n---\n\n## Params\n\n| Param | Description |\n|-------|-------------|\n| `satta_list=1` | Game list (`name`, `time`, `bg_yellow`) |\n| `game` / `satta` | Game name e.g. `GALI` |\n| `date` | `YYYY-MM-DD` (**12 month plan only**) |\n| `list=1` | Full history |\n| `game=all` | All games for date |\n\n---\n\n## Examples\n\n```\n/mapi/satta_api.php?satta_list=1&domain_key=YOUR_KEY\n/mapi/satta_api.php?game=GALI&domain_key=YOUR_KEY\n/mapi/satta_api.php?game=GALI&date=2026-06-10&domain_key=YOUR_KEY\n/mapi/satta_api.php?game=GALI&list=1&domain_key=YOUR_KEY\n/mapi/satta_api.php?game=all&domain_key=YOUR_KEY\n```"
+    },
+    {
+      "name": "Teer API",
+      "item": [
+        {
+          "name": "Game List (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/teer_api.php?game_list=1&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "teer_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game_list",
+                  "value": "1"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "All games from `teer_game`: name, fr_time, sr_time."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Today (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/teer_api.php?game={{teer}}&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "teer_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{teer}}"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Today's FR/SR result for one game."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Previous Date (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/teer_api.php?game={{teer}}&date={{date}}&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "teer_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{teer}}"
+                },
+                {
+                  "key": "date",
+                  "value": "{{date}}"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Previous date — **12 month (yearly) plan only**."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Full History (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/teer_api.php?game={{teer}}&list=1&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "teer_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "{{teer}}"
+                },
+                {
+                  "key": "list",
+                  "value": "1"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "Full history (max 500) — date per row as DD-MM-YYYY — **12 month plan only**."
+          },
+          "response": []
+        },
+        {
+          "name": "All Games - Today (GET)",
+          "request": {
+            "method": "GET",
+            "header": [],
+            "url": {
+              "raw": "{{baseUrl}}/mapi/teer_api.php?game=all&domain_key={{domain_key}}",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "teer_api.php"
+              ],
+              "query": [
+                {
+                  "key": "game",
+                  "value": "all"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}"
+                }
+              ]
+            },
+            "description": "All teer games with today's results."
+          },
+          "response": []
+        },
+        {
+          "name": "Single Game - Today (POST)",
+          "request": {
+            "method": "POST",
+            "header": [
+              {
+                "key": "Content-Type",
+                "value": "application/x-www-form-urlencoded"
+              }
+            ],
+            "body": {
+              "mode": "urlencoded",
+              "urlencoded": [
+                {
+                  "key": "game",
+                  "value": "{{teer}}",
+                  "type": "text"
+                },
+                {
+                  "key": "domain_key",
+                  "value": "{{domain_key}}",
+                  "type": "text"
+                }
+              ]
+            },
+            "url": {
+              "raw": "{{baseUrl}}/mapi/teer_api.php",
+              "host": [
+                "{{baseUrl}}"
+              ],
+              "path": [
+                "mapi",
+                "teer_api.php"
+              ]
+            },
+            "description": "POST body also supported."
+          },
+          "response": []
+        }
+      ],
+      "description": "# teer_api.php\n\n**Teer Live Result**\n\n**Endpoint:** `GET/POST {{baseUrl}}/mapi/teer_api.php`\n\n**Tables:** `teer_game`, `teer_result`\n\nSame auth/plan logic as other MAPI endpoints (`mapi_shared.php`).\n\n---\n\n## Authentication\n\n| Param | Postman | Live server |\n|-------|---------|-------------|\n| `domain_key` | Required | Required (`user_domain.unique_key`) |\n| `domain` | Optional | Optional (Referer verified if sent) |\n\n---\n\n## Plan data access\n\n| Plan (`package.month`) | Today | Previous date | `list=1` / history |\n|------------------------|-------|---------------|---------------------|\n| `0` trial / `1` monthly / `6` | Yes | No | No |\n| `12` yearly | Yes | Yes | Yes (max 500) |\n\nError: `OLD Data not available for Monthly Plan`\n\n---\n\n## Params\n\n| Param | Description |\n|-------|-------------|\n| `game_list=1` / `teer_list=1` | All games from `teer_game` (`name`, `fr_time`, `sr_time`) |\n| `game` / `teer` | Game name e.g. `Shillong Teer` |\n| `date` | `YYYY-MM-DD` (**12 month plan only**) |\n| `list=1` | Full history per game (`date` as `DD-MM-YYYY` in each row) |\n| `game=all` | All games for date |\n\n---\n\n## Result row (today / single date)\n\n`name`, `fr_result`, `sr_result`, `fr_time`, `sr_time`\n\n## History row (`list=1`)\n\n`name`, `fr_result`, `sr_result`, `date` (e.g. `11-06-2026`)\n\n---\n\n## Examples\n\n```\n/mapi/teer_api.php?game_list=1&domain_key=YOUR_KEY\n/mapi/teer_api.php?game=Shillong Teer&domain_key=YOUR_KEY\n/mapi/teer_api.php?game=Shillong Teer&date=2026-06-10&domain_key=YOUR_KEY\n/mapi/teer_api.php?game=Shillong Teer&list=1&domain_key=YOUR_KEY\n/mapi/teer_api.php?game=all&domain_key=YOUR_KEY\n```"
+    }
+  ],
+  "variable": [
+    {
+      "key": "baseUrl",
+      "value": "https://www.matkaapi.com"
+    },
+    {
+      "key": "domain_key",
+      "value": ""
+    },
+    {
+      "key": "domain",
+      "value": ""
+    },
+    {
+      "key": "market",
+      "value": "mainbazar"
+    },
+    {
+      "key": "game",
+      "value": "kalyanstarline"
+    },
+    {
+      "key": "satta",
+      "value": "GALI"
+    },
+    {
+      "key": "teer",
+      "value": "Shillong Teer"
+    },
+    {
+      "key": "baji",
+      "value": "1"
+    },
+    {
+      "key": "date",
+      "value": "2026-06-10"
+    }
+  ]
+}
